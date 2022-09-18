@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+        import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA9VgTfHQe75HJKXDxe0dWTpepa6Gz9bU4",
+            authDomain: "donutsfury.firebaseapp.com",
+            databaseURL: "https://donutsfury-default-rtdb.firebaseio.com",
+            projectId: "donutsfury",
+            storageBucket: "donutsfury.appspot.com",
+            messagingSenderId: "99513445688",
+            appId: "1:99513445688:web:0670f89616d255c74725cd"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase();
+        const rankingList = document.getElementById("rankingList");
+        
+        //buscar dados firebase
+
+        
+        // const dbRef = ref(database);
+        
+        // get(child(dbRef, `ranking`)).then((snapshot) => {
+        //     if (snapshot.exists()) {
+        //         console.log(snapshot.val());
+                              
+        //         let ranking = snapshot.val();
+        //         let pontuacao = [];
+                                
+        //         //enviar para o html                
+        //         for (let i in ranking){
+                                       
+        //             pontuacao.push({
+        //                 nomes: i,
+        //                 pontos: snapshot.val()[i]
+        //             })
+
+        //             rankingList.innerHTML += "<p>" + i + ": " + ranking[i] + "</p>";
+        //             console.log(ranking[i]);
+
+        //         }
+        //     } else {
+        //         console.log("No data available");
+        //     }
+        // }).catch((error) => {
+        //     console.error(error);
+        // });
+
+        
+        fetch("https://donutsfury-default-rtdb.firebaseio.com/ranking.json")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            
+                let pontuacao = [];
+                               
+                for(let i in data){                                     
+                    //preenche o array pontuação com i (nomes dos jogadores) e data (pontos dos jogadores)
+                    pontuacao.push({
+                        nomes: i,
+                        pontos: data[i]
+                     })
+
+                    //carrega no HTML os dados do ranking
+                    document.querySelector("#rankingList").innerHTML += "<p>" + i + ": " + data[i] + "</p>"   
+                    console.log(data[i]);
+                }
+                    console.log(pontuacao);
+            })
+
+        // Atualizar a página
+        var btn = document.querySelector("#refresh");
+            btn.addEventListener("click", function() {
+                location.reload();
+            });
+
+    </script>
+
+</body>
+    <div id="titulo">
+        <img id="donut" src="./images/donut.png" alt="donut">
+        <h1>DONUTS FURY</h1>
+        <img id="rip" src="./images/rip.png" alt="R.I.P.">
+    </div>    
+    <div id="container">
+        <div id="botoes">
+            
+            <a href="https://aliens-construct3.netlify.app" target="_blank" class="button"><button class="button">JOGAR DONUTS FURY</button></a>
+            <input class="button" id="refresh" type="button" value= "ATUALIZAR RANKING"/>
+            <img src="./images/survivor-idle_shotgun_0.png" alt="player">
+
+        </div>
+
+        <div id="ranking">
+            <h2>Ranking</h2>
+            <p id="rankingList"></p>
+        </div>
+
+        <div id="zumbi">
+            <!-- <img id="donut" src="./images/donut.png" alt="donut"> -->
+            <img id="zumbigif" src="./images/zoombie.gif" alt="zumbi">
+        </div>
+    </div>
+    
+</html>

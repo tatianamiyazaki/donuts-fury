@@ -1,0 +1,93 @@
+
+html{
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+body{
+    background-image: url(./images/background.jpg);
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; 
+}
+
+#titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+#donut{
+    max-width: 10%;
+    max-height: 10%;
+}
+
+#rip{
+    max-width: 10%;
+    max-height: 10%;
+}
+
+h1{
+    text-align: center;
+    color: rgb(230, 21, 21);
+    font-weight: bolder;
+    font-size: 4em;
+}
+
+
+#botoes{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#botoes a button{
+    border: none;
+}
+
+#botoes input{
+    font-weight: bolder;
+}
+
+.button{
+    width: auto;
+    height: 80px;
+    color: red;
+    border: 1px solid black;
+    font-weight: bolder;
+    cursor: pointer; 
+    background-color: rgb(207, 207, 207) ;
+}
+
+
+#ranking{
+    text-align: center;
+    margin: 50px;
+    padding: 50px;
+}
+
+#zumbi{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#zumbigif{
+    transform: rotate(270deg);
+    max-width: 60%;
+    max-height: 60%;
+}
+
+h2{
+    color: rgb(238, 56, 183);
+}
+
+p{
+    font-size: large;
+    font-weight: bolder;
+    color: wheat;
+}
